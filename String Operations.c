@@ -1,61 +1,94 @@
 #include<stdio.h>
-#include<string.h>
-
-void lengthStr(char str[]){
-int len=0,i;i=0;
-while(str[i]!='\0'){len++;i++;}
-printf("length=%d\n",len);
+void length(char str[]){
+	int i,l=0;
+	for(i=0;str[i]!='\0';i++)
+	l++;
+	printf("Length of string is: %d",l);
 }
 
-void copyStr(char str1[],char str3[]){
-int i=0;
-while(str1[i]!='\0'){str3[i]=str1[i];i++;}
-str3[i]='\0';
-printf("copied=%s\n",str3);
+void reverse(char str[]){
+		int i,l=0;
+	for(i=0;str[i]!='\0';i++)
+	l++;
+	printf("Reversed String: ");
+	for(i=l-1;i>=0;i--)
+	printf("%c",str[i]);
+}
+void con(char str[], char strr[]){
+	int i,j;
+	for(i=0;str[i]!='\0';i++);
+	for(j=0;strr[j]!='\0';j++,i++){
+		str[i]=strr[j];
+	}
+	str[i]='\0';
+	printf(" Concatenated string: %s",str);
+}
+void copy(char str[],char strr[]){
+	int i;
+	
+	for(i=0;str[i]!='\0';i++){
+		strr[i]=str[i];
+	}
+	strr[i]='\0';
+	printf("\nCopied String: %s",strr);
 }
 
-void compareStr(char str2[]){
-int i=0;
-while(str2[i]!='\0' && str2[i]!='\0') i++; // messy human style
-printf("Second string: %s\n",str2); // just show second
-}
-
-void concatStr(char str2[]){
-int i=0,j=0;
-char temp[200]; // messy temp
-while(str2[i]!='\0'){temp[j]=str2[i];i++;j++;}
-temp[j]='\0';
-printf("Concatenated second string alone: %s\n",temp);
+	void compare(char str[], char strr[]) {
+    int i = 0, flag = 0;
+    while (str[i] != '\0' && strr[i] != '\0') {
+        if (str[i] != strr[i]) {
+            flag = 1;
+            break;
+        }
+        i++;
+    }
+    if (flag == 0 && str[i] == '\0' && strr[i] == '\0')
+    printf("\nStrings are equal");
+    else
+    printf("\nStrings are not equal");
 }
 
 int main(){
-char str1[100],str2[100],str3[100];
-int c;
-printf("enter first string: "); scanf(" %[^\n]s",str1);
-printf("enter second string: "); scanf(" %[^\n]s",str2);
-
-while(1){
-printf("\nchoose operation\n1.length of first string\n2.copy first string\n3.compare second string\n4.concatenate second string\n5.exit\nenter choice: ");
-scanf("%d",&c);
-
-switch(c){
-case 1:
-lengthStr(str1);
-break;
-case 2:
-copyStr(str1,str3);
-break;
-case 3:
-compareStr(str2);
-break;
-case 4:
-concatStr(str2);
-break;
-case 5:
-printf("Exit\n"); return 0;
-default:
-printf("invalid choice\n");
+	char str1[200];
+	char str2[200];
+	int c;
+	printf("Enter a choice for the operation youy want to perform:");
+	printf("\n1.Length \n2.Reverse \n3.Concatenate \n4.Copy \n5.Compare \n");
+	scanf("%d",&c);
+	getchar();
+	switch (c){
+		case 1: printf("Enter a string:");
+		scanf("%[^\n]",str1);
+		length(str1);
+		break;
+		
+		case 2: printf("Enter a string:");
+		scanf("%[^\n]",str1);
+		reverse(str1);
+		break;
+		
+		case 3:  printf("Enter a string:");
+		scanf("%[^\n]",str1);
+		 getchar();
+		 printf("Enter another string:");
+		scanf("%[^\n]",str2);
+		con(str1,str2);
+		break;
+		
+		case 4: printf("Enter a string you want to copy:");
+		scanf("%[^\n]",str1);
+		copy(str1,str2);
+		break;
+		
+		case 5: printf("Enter a string:");
+		scanf("%[^\n]",str1);
+		 getchar();
+		 printf("Enter another string with which you want to compare:");
+		scanf("%[^\n]",str2);
+		compare(str1,str2);
+		break;
+		
+		default: printf ("\nInvalid Option");
+	}
+	return 0;
 }
-}
-}
-
