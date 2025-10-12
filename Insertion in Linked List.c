@@ -6,9 +6,9 @@ struct node{
     struct node *next;
 };
 
-void addbeg(struct node *head);
-void addend(struct node *head);
-void pos(struct node *head);
+struct node* addbeg(struct node *head);
+struct node* addend(struct node *head);
+struct node* pos(struct node *head);
 void printlist(struct node *head);
 
 void list(int n){
@@ -57,8 +57,7 @@ int main(){
     list(num);
     return 0;
 }
-
-void addbeg(struct node *head){
+ struct node* addbeg(struct node *head){
     struct node *snode;
     int c,data;
     printf("\nDo you want to enter a node at the beginning(1/0):");
@@ -83,7 +82,7 @@ void addbeg(struct node *head){
     }
 }
 
-void addend(struct node *head){
+struct node* addend(struct node *head){
     struct node *enode,*temp;
     int b,data;
     printf("\nDo you want to add an element at the end?(1/0):");
@@ -112,7 +111,7 @@ void addend(struct node *head){
     }
 }
 
-void pos(struct node *head){
+struct node* pos(struct node *head){
     struct node *pnode,*temp;
     int z,pos,data,i;
     printf("\nDo you want to enter an element at any position?(1/0):");
